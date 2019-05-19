@@ -19,7 +19,7 @@ any warnings on  Gradescope and CSIL.  Once compiled,  your program  will be run
 with a single command-line argument:
 
 ```sh
-./avl path/to/command/file.cmd
+./avl path/to/command/file.avl
 ```
 
 Each line in the command file describes an operation  or set of operations  that
@@ -46,7 +46,7 @@ Likewise, empty lines should be ignored.
 Any line starting with a plus sign (`+`) contains a whitespace-separated list of
 numbers  that you should insert into your tree.  Insert them in the order given.
 If your tree already  contains one of the numbers, do not add it again (that is,
-your should act like a set).
+your tree should act like a set).
 
 ```
 # After this, your tree should contain {7, 12, 42, 108}
