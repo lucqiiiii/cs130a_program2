@@ -1,0 +1,7 @@
+The following inserts would cause a left-left rotation:
+11 to 19
+
+Node(20, h=1)
+  Leaf(10)
+  Leaf(30)
+
