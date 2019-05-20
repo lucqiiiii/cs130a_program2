@@ -1,5 +1,5 @@
-+ 0 1
+insert 0 1
 print right-right
 
-+ 2
+insert 2
 print tree

@@ -11,8 +11,8 @@ their syntax is described below.
 ## Program Specification
 
 Define  your  AVL  tree  class  (or classes)  in  `Tree.h`.  Implement  them  in
-`Tree.cpp`. All parsing and output should be done in your `main()` function (and
-/ or helper functions) in `avl.cpp`.
+`Tree.cpp`. All parsing and most output should be done in your `main()` function
+(and/or helper functions) in `avl.cpp`.
 
 Your code  will be compiled with the makefile provided - it must compile without
 any warnings on  Gradescope and CSIL.  Once compiled,  your program  will be run
@@ -43,14 +43,14 @@ Likewise, empty lines should be ignored.
 
 ### Inserts
 
-Any line starting with a plus sign (`+`) contains a whitespace-separated list of
+Any line starting with the word `insert` contains a whitespace-separated list of
 numbers  that you should insert into your tree.  Insert them in the order given.
 If your tree already  contains one of the numbers, do not add it again (that is,
 your tree should act like a set).
 
 ```
 # After this, your tree should contain {7, 12, 42, 108}
-+ 12 7 108 42 12
+insert 12 7 108 42 12
 ```
 
 After performing the insert,  print statistics  on what you did.  The numbers in
@@ -65,12 +65,12 @@ Visited 5 (1) nodes and performed 0 (0) rotations.
 
 ### Lookups
 
-Any line starting  with a question mark  (`?`)  contains a  whitespace-separated
-list of numbers that should be looked up in your tree.
+Any line starting with the word `lookup` contains a whitespace-separated list of
+numbers that should be looked up in your tree.
 
 ```
 # Look these up in the tree constructed above:
-? 7 14 -82 12 7
+lookup 7 14 -82 12 7
 
 ```
 

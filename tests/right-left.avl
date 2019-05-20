@@ -1,5 +1,5 @@
-+ 10 30
+insert 10 30
 print right-left
 
-+ 20
+insert 20
 print tree
