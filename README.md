@@ -53,13 +53,15 @@ your tree should act like a set).
 insert 12 7 108 42 12
 ```
 
-After performing the insert,  print statistics  on what you did.  The numbers in
-parentheses are amortized costs;  a newly inserted node should not be counted as
-visited during its own insert.
+After performing the insert,  print statistics  on what you did;  the numbers in
+parentheses are amortized costs.  A newly inserted node should not be counted as
+visited  during its own insert.  Single rotations  should count as one rotation,
+and double rotations should count as two.
 
 ```
 Added 4 of 5 nodes.
 Visited 5 (1) nodes and performed 0 (0) rotations.
+
 ```
 
 
@@ -71,11 +73,10 @@ numbers that should be looked up in your tree.
 ```
 # Look these up in the tree constructed above:
 lookup 7 14 -82 12 7
-
 ```
 
 Report the nodes you found in the order they were listed, and statistics.  There
-will never be any rotations during a lookup,  but reporting them  lets you reuse
+should never be any rotations during a lookup, but reporting them lets you reuse
 your print function from insert.
 
 ```
@@ -92,7 +93,7 @@ need to print is determined by the next word.
 
 If the next word is `tree`, print your entire tree.  Use two spaces to indent at
 each level.  Leaf nodes have a special form for compactness; internal nodes also
-include their height.
+include their height.  An empty tree should simply print as `Null`.
 
 ```
 Node(12, h=2):
@@ -126,7 +127,7 @@ maximum (or minimum) value of a 32-bit signed integer as an endpoint.
 
 ```
 The following inserts would cause a right-right rotation:
--44 to 17, 37, 102 to 558, 1001, 1009 to 2147483647
+-44 to 17, 37, 102 to 558, 1007, 1009 to 2147483647
 
 ```
 
