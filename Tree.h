@@ -9,12 +9,15 @@ public:
   void insert(int value){root = insert(value,root);}
   void display(){preOrder(root);}
   void reset();
-  int getVisit(){return visit;}
-  int getRotate(){return rotate;}
+  double getVisit(){return visit;}
+  double getRotate(){return rotate;}
   int getInsert(){return insert;}
   bool lookup(int value){lookup(value,root)};
   void printPre(){printPre(root);}
-  void print(int value);
+  void printll(){printll(root);}
+  void printlr(){printlr(root);}
+  void printrl(){printrl(root);}
+  void printrr(){printrr(root);} 
 
 private:
   struct node{
@@ -34,8 +37,8 @@ private:
   }
 
   node* root;
-  int visit;
-  int rotate;
+  double visit;
+  double rotate;
   int insert;
   
   destroy(node* root){
@@ -167,5 +170,23 @@ private:
     printPre(root -> left);  
     printPre(root -> right); 
   }  
+
+  void printll(node* root){
+    cout << "The following inserts would cause a left-left rotation: "          << endl;
+  }
+
+  void printlr(node* root){
+  
+  }
+
+  void printrl(node* root){
+  
+  }
+
+  void printrr(node* root){
+  
+  }
+
+
 };
 #endif

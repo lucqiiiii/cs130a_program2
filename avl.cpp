@@ -4,6 +4,8 @@
 #include <string>
 #include <unistd.h>
 
+using namespace std;
+
 int main(){
 /*  AVL t;
   t.insert(10);
