@@ -2,22 +2,25 @@
 #define TREE_H
 #include <cstddef>
 #include <iostream>
+
+using namespace std;
+
 class AVL {
 public:
-  AVL(){root = NULL; visit = 0; rotate = 0; insert = 0;}
+  AVL(){root = NULL; visit = 0; rotate = 0; inserted = 0;}
   ~AVL(){destroy(root);}  
   void insert(int value){root = insert(value,root);}
   void display(){preOrder(root);}
   void reset();
   double getVisit(){return visit;}
   double getRotate(){return rotate;}
-  int getInsert(){return insert;}
-  bool lookup(int value){lookup(value,root)};
+  int getInsert(){return inserted;}
+  bool lookup(int value){lookup(value,root);}
   void printPre(){printPre(root);}
-  void printll(){printll(root);}
-  void printlr(){printlr(root);}
-  void printrl(){printrl(root);}
-  void printrr(){printrr(root);} 
+  vector<pair<int,int>> printll(){printll(root);}
+  vector<pair<int,int>> printlr(){printlr(root);}
+  vector<pair<int,int>> printrl(){printrl(root);}
+  vector<pair<int,int>> printrr(){printrr(root);} 
 
 private:
   struct node{
@@ -39,9 +42,9 @@ private:
   node* root;
   double visit;
   double rotate;
-  int insert;
+  int inserted;
   
-  destroy(node* root){
+  void destroy(node* root){
     while(root != NULL){
       destroy(root -> left);
       destroy(root -> right);
@@ -58,9 +61,10 @@ private:
   }
 
   node* insert(int value, node* root){
-    if(root == NULL)
+    if(root == NULL){
       return newnode(value);
-      insert++;
+      inserted++;
+    }
     else if(value < root -> value){
       root -> left = insert(value,root -> left);
       visit++;
@@ -70,7 +74,7 @@ private:
       visit++;
     }
     else{
-      return this;
+      return root;
     }
     root -> height = max(height(root -> left), height(root -> right)) + 1;
    
@@ -171,19 +175,19 @@ private:
     printPre(root -> right); 
   }  
 
-  void printll(node* root){
+  vector<pair<int,int>> printll(node* root){
     cout << "The following inserts would cause a left-left rotation: "          << endl;
   }
 
-  void printlr(node* root){
+  vector<pair<int,int>> printlr(node* root){
   
   }
 
-  void printrl(node* root){
+  vector<pair<int,int>> printrl(node* root){
   
   }
 
-  void printrr(node* root){
+  vector<pair<int,int>> printrr(node* root){
   
   }
 
