@@ -75,6 +75,7 @@ private:
       visit++;
     }
     else{
+      visit++;
       return root;
     }
     root -> height = max(height(root -> left), height(root -> right)) + 1;
