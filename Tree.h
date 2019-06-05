@@ -2,6 +2,7 @@
 #define TREE_H
 #include <cstddef>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -17,11 +18,11 @@ public:
   int getInsert(){return inserted;}
   bool lookup(int value){lookup(value,root);}
   void printPre(){printPre(root);}
-  vector<pair<int,int>> printll(){printll(root);}
+/*  vector<pair<int,int>> printll(){printll(root);}
   vector<pair<int,int>> printlr(){printlr(root);}
   vector<pair<int,int>> printrl(){printrl(root);}
   vector<pair<int,int>> printrr(){printrr(root);} 
-
+*/
 private:
   struct node{
     int value;
@@ -159,6 +160,7 @@ private:
       lookup(value, root -> left);
       visit++;
     }
+    return false;
   }
 
    void printPre(node* root){ 
@@ -175,8 +177,40 @@ private:
     printPre(root -> right); 
   }  
 
-  vector<pair<int,int>> printll(node* root){
-    cout << "The following inserts would cause a left-left rotation: "          << endl;
+/*  vector<pair<int,int>> printll(node* root){
+    vector<pair<int,int>> v;
+    bool heavy = false;
+    checkll(root,heavy,v);
+    return v;
+  }
+  
+  void checkll(node* root, bool heavy, vector<pair<int,int>>& v){
+    if(root == NULL){
+      return v;
+    }
+    //every time the heavy path goes right, set the min to that root
+    if(root -> left -> left == NULL && root -> left -> right == NULL){
+      if(root -> right == NULL){//no sibling
+        //range is less than the root -> left greater than or equal to 
+        //absolute min
+      else{//balance with sibling
+        //range is less than the root -> left greater than or equal to 
+        //absolute min, greater than the root -> left less than the root
+      if(heavy == true){
+        if(root
+
+    }
+    if(height(root -> left) - height(root -> right) == 1){
+      heavy = true;
+    }
+    else if(height(root -> right) - height(root -> left) == 1){
+      heavy = false;
+    }
+    else if(height(root -> left) - height(root -> right) == 0){
+      continue;
+    }
+    checkll(root -> left, heavy, v);
+    checkll(root -> right, heavy, v);
   }
 
   vector<pair<int,int>> printlr(node* root){
@@ -191,6 +225,6 @@ private:
   
   }
 
-
+*/
 };
 #endif

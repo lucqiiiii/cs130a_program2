@@ -71,7 +71,7 @@ int main(){
       if(word == "tree"){
         printPre();
       }
-      else if(word == "left-left"){
+/*      else if(word == "left-left"){
         printll();
       }
       else if(word == "left-right"){
@@ -82,7 +82,7 @@ int main(){
       }
       else if(word == "right-right"){
         printrr();
-      }
+      }*/
     }
   }
 }
