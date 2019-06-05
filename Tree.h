@@ -8,7 +8,7 @@ using namespace std;
 
 class AVL {
 public:
-  AVL(){root = NULL; visit = 0; rotate = 0; inserted = 0;}
+  AVL();
   ~AVL(){destroy(root);}  
   void insert(int value){root = insert(value,root);}
   void display(){preOrder(root);}
@@ -18,11 +18,12 @@ public:
   int getInsert(){return inserted;}
   bool lookup(int value){ return lookup(value,root);}
   void printPre(){int depth = 0; printPre(root,depth);}
-/*  vector<pair<int,int>> printll(){printll(root);}
-  vector<pair<int,int>> printlr(){printlr(root);}
-  vector<pair<int,int>> printrl(){printrl(root);}
-  vector<pair<int,int>> printrr(){printrr(root);} 
-*/
+  void getInfo(){getInfo(root);}
+  vector<pair<int,int>> getLL(){return LL;}
+  vector<pair<int,int>> getLR(){return LR;}
+  vector<pair<int,int>> getRL(){return RL;}
+  vector<pair<int,int>> getRR(){return RR;}
+
 private:
   struct node{
     int value;
@@ -44,7 +45,11 @@ private:
   double visit;
   double rotate;
   int inserted;
-  
+  vector<pair<int,int>> LL;
+  vector<pair<int,int>> LR;
+  vector<pair<int,int>> RL;
+  vector<pair<int,int>> RR;
+
   void destroy(node* root){
     if(root != NULL){
       destroy(root -> left);
@@ -194,54 +199,79 @@ private:
     }
   }  
 
-/*  vector<pair<int,int>> printll(node* root){
-    vector<pair<int,int>> v;
-    bool heavy = false;
-    checkll(root,heavy,v);
-    return v;
-  }
-  
-  void checkll(node* root, bool heavy, vector<pair<int,int>>& v){
+  void getInfo(node* root){
     if(root == NULL){
-      return v;
+      return;
     }
-    //every time the heavy path goes right, set the min to that root
-    if(root -> left -> left == NULL && root -> left -> right == NULL){
-      if(root -> right == NULL){//no sibling
-        //range is less than the root -> left greater than or equal to 
-        //absolute min
-      else{//balance with sibling
-        //range is less than the root -> left greater than or equal to 
-        //absolute min, greater than the root -> left less than the root
-      if(heavy == true){
-        if(root
-
-    }
-    if(height(root -> left) - height(root -> right) == 1){
-      heavy = true;
-    }
-    else if(height(root -> right) - height(root -> left) == 1){
-      heavy = false;
-    }
-    else if(height(root -> left) - height(root -> right) == 0){
-      continue;
-    }
-    checkll(root -> left, heavy, v);
-    checkll(root -> right, heavy, v);
+    int min = -2147483648;
+    int max = 2147483647;
+    int f1 = 0;
+    int f2 = 0;
+    check(root,min,max,f1,f2);
   }
-
-  vector<pair<int,int>> printlr(node* root){
   
-  }
+  void check(node* root, int min, int max, int f1, int f2){
+    if(root == NULL){
+      return;
+    }
+    int direction = height(root -> left) - height(root -> right);
+    if(direction == 1){//left taller
+      check(root -> left, min, root -> value - 1, -1, 0);
+      check(root -> right, root -> value + 1, max, 0, 0);
+    }
+    else if(direction == -1){//left shorter
+      check(root -> left, min, root -> value - 1, 0, 0);
+      check(root -> right, root -> value + 1, max, 1, 0);
+    }
+    else{//equal height
+      if(f2 == 0){
+        check(root -> left, min, root -> value - 1, f1, -1);
+        check(root -> right, root -> value + 1, max, f1, 1);
+      }
+      else{
+        check(root -> left, min, root -> value - 1, f1, f2);
+        check(root -> right, root -> value + 1, max, f1, f2);
+      }
+    }
 
-  vector<pair<int,int>> printrl(node* root){
+    if(root -> left == NULL && root -> right == NULL){//leaf
+//      std::cout << "I'm at " << root->value << std::endl;
+      if(f1 == -1){//f1 is set to left, the first op is left
+        if(f2 == -1){//left with sibling
+	  LL.push_back(pair<int,int>(min,root -> value - 1));
+	  LL.push_back(pair<int,int>(root -> value + 1, max));
+        }
+        else if(f2 == 1){//left with sibling
+	  LR.push_back(pair<int,int>(root -> value + 1, max));
+	  LR.push_back(pair<int,int>(min, root -> value - 1));
+
+        }
+        else{//no sibling
+          LL.push_back(pair<int,int>(min,root -> value - 1));
+	  LR.push_back(pair<int,int>(root -> value + 1,max));
+        }
+      }
+      else if(f1 == 1){//f1 set to right, the first op is right
+        if(f2 == -1){//left with sibling
+          RL.push_back(pair<int,int>(min,root -> value - 1));
+	  RL.push_back(pair<int,int>(root -> value + 1, max));
+
+        }
+        else if(f2 == 1){//left with sibling
+	  RR.push_back(pair<int,int>(root -> value + 1,max));
+	  RR.push_back(pair<int,int>(min, root -> value - 1));
+
+        }
+        else{//no sibling
+          RL.push_back(pair<int,int>(min,root -> value - 1));
+	  RR.push_back(pair<int,int>(root -> value + 1,max));
+        }
+      }
+      else{//f1 not set, no rotation
+        return;
+      }
+    }
+  }
   
-  }
-
-  vector<pair<int,int>> printrr(node* root){
-  
-  }
-
-*/
 };
 #endif

@@ -8,16 +8,7 @@
 using namespace std;
 
 int main(int argc, char* argv[]){
-/*  AVL t;
-  t.insert(10);
-  t.insert(20);
-  t.insert(30);
-  t.insert(40);
-  t.insert(50);
-  t.insert(25);
-  t.display();
-  cout << "\n";  
-*/
+
   if(argc != 2){
     cerr << "Something is wrong" << endl;
     exit(1);
@@ -32,7 +23,7 @@ int main(int argc, char* argv[]){
   AVL t;
   string line;
   while(std::getline(check, line)){
-    std::istringstream iss(line);
+    istringstream iss(line);
     string word;
     iss >> word;
     int value;
@@ -70,25 +61,95 @@ int main(int argc, char* argv[]){
       cout << v[i]<< "]" << endl;
       cout << "Visited " << t.getVisit() << " (" << (t.getVisit()/length) << ") nodes and performed " << t.getRotate() << " (" << (t.getRotate()/length) << ") rotations.\n" << endl;
     }
-    
+ 
     else if(word == "print"){
       iss >> word;
+      t.reset();
+      t.getInfo();
       if(word == "tree"){
         t.printPre();
         cout << endl;
       }
-/*      else if(word == "left-left"){
-        printll();
+      else if(word == "left-left"){
+        vector<pair<int,int>> v = t.getLL();
+        if(v.size() == 0){
+          cout << "No inserts would cause a left-left rotation." << endl << endl;
+        }
+        else{
+          size_t i; 
+          cout << "The following inserts would cause a left-left rotation:" << endl;
+          for(i = 0; i < v.size() - 1; i++){
+            if(v[i].first != v[i].second)
+              cout << v[i].first << " to " << v[i].second << ", ";
+            else
+              cout << v[i].first << ", ";
+          }
+          if(v[i].first != v[i].second)
+            cout << v[i].first << " to " << v[i].second << endl << endl;
+          else
+            cout << v[i].first << endl << endl;
+        }
       }
       else if(word == "left-right"){
-        printlr();
+        vector<pair<int,int>> v = t.getLR();
+        if(v.size() == 0){
+          cout << "No inserts would cause a left-right rotation." << endl << endl;
+        }
+        else{
+          size_t i; 
+          cout << "The following inserts would cause a left-right rotation:" << endl;
+          for(i = 0; i < v.size() - 1; i++){
+            if(v[i].first != v[i].second)
+              cout << v[i].first << " to " << v[i].second << ", ";
+            else
+              cout << v[i].first << ", ";
+          }
+          if(v[i].first != v[i].second)
+            cout << v[i].first << " to " << v[i].second << endl << endl;
+          else
+            cout << v[i].first << endl << endl;
+        }
       }
       else if(word == "right-left"){
-        printrl();
+        vector<pair<int,int>> v = t.getRL();
+        if(v.size() == 0){
+          cout << "No inserts would cause a right-left rotation." << endl << endl;
+        }
+        else{
+          size_t i; 
+          cout << "The following inserts would cause a right-left rotation:" << endl;
+          for(i = 0; i < v.size() - 1; i++){
+            if(v[i].first != v[i].second)
+              cout << v[i].first << " to " << v[i].second << ", ";
+            else
+              cout << v[i].first << ", ";
+          }
+          if(v[i].first != v[i].second)
+            cout << v[i].first << " to " << v[i].second << endl << endl;
+          else
+            cout << v[i].first << endl << endl;
+        }
       }
       else if(word == "right-right"){
-        printrr();
-      }*/
+        vector<pair<int,int>> v = t.getRR();
+        if(v.size() == 0){
+          cout << "No inserts would cause a right-right rotation." << endl << endl;
+        }
+        else{
+          size_t i; 
+          cout << "The following inserts would cause a right-right rotation:" << endl;
+          for(i = 0; i < v.size() - 1; i++){
+            if(v[i].first != v[i].second)
+              cout << v[i].first << " to " << v[i].second << ", ";
+            else
+              cout << v[i].first << ", ";
+          }
+          if(v[i].first != v[i].second)
+            cout << v[i].first << " to " << v[i].second << endl << endl;
+          else
+            cout << v[i].first << endl << endl;
+        }
+      }
     }
   }
 }
