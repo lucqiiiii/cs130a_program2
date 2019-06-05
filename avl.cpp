@@ -72,7 +72,7 @@ int main(int argc, char* argv[]){
     }
     
     else if(word == "print"){
-      word = iss >> word;
+      iss >> word;
       if(word == "tree"){
         t.printPre();
       }

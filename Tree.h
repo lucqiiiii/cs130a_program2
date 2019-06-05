@@ -16,7 +16,7 @@ public:
   double getVisit(){return visit;}
   double getRotate(){return rotate;}
   int getInsert(){return inserted;}
-  bool lookup(int value){lookup(value,root);}
+  bool lookup(int value){ return lookup(value,root);}
   void printPre(){printPre(root);}
 /*  vector<pair<int,int>> printll(){printll(root);}
   vector<pair<int,int>> printlr(){printlr(root);}
