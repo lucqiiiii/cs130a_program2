@@ -1,0 +1,11 @@
+insert 1 2 4 3 
+
+lookup 4 5 6 7
+
+print left-left
+
+print left-right
+
+print right-left
+
+print right-right

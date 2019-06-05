@@ -55,11 +55,17 @@ int main(int argc, char* argv[]){
         }
       }
       cout << "Found " << count << " of " << length << " nodes: [";
-      for(i = 0; i < v.size()-1; i++){
-        cout << v[i] << ", ";
+      if(v.size() == 0){
+       cout << "]" << endl;
+       cout << "Visited " << t.getVisit() << " (" << (t.getVisit()/length) << ") nodes and performed " << t.getRotate() << " (" << (t.getRotate()/length) << ") rotations.\n" << endl;
       }
-      cout << v[i]<< "]" << endl;
-      cout << "Visited " << t.getVisit() << " (" << (t.getVisit()/length) << ") nodes and performed " << t.getRotate() << " (" << (t.getRotate()/length) << ") rotations.\n" << endl;
+      else{
+        for(i = 0; i < v.size()-1; i++){
+          cout << v[i] << ", ";
+        }
+        cout << v[i]<< "]" << endl;
+        cout << "Visited " << t.getVisit() << " (" << (t.getVisit()/length) << ") nodes and performed " << t.getRotate() << " (" << (t.getRotate()/length) << ") rotations.\n" << endl;
+      }
     }
  
     else if(word == "print"){
@@ -79,12 +85,12 @@ int main(int argc, char* argv[]){
           size_t i; 
           cout << "The following inserts would cause a left-left rotation:" << endl;
           for(i = 0; i < v.size() - 1; i++){
-            if(v[i].first != v[i].second)
+            if(v[i].second != v[i].first)
               cout << v[i].first << " to " << v[i].second << ", ";
             else
               cout << v[i].first << ", ";
           }
-          if(v[i].first != v[i].second)
+          if(v[i].second != v[i].first)
             cout << v[i].first << " to " << v[i].second << endl << endl;
           else
             cout << v[i].first << endl << endl;
@@ -99,12 +105,12 @@ int main(int argc, char* argv[]){
           size_t i; 
           cout << "The following inserts would cause a left-right rotation:" << endl;
           for(i = 0; i < v.size() - 1; i++){
-            if(v[i].first != v[i].second)
+            if(v[i].second != v[i].first)
               cout << v[i].first << " to " << v[i].second << ", ";
             else
               cout << v[i].first << ", ";
           }
-          if(v[i].first != v[i].second)
+          if(v[i].second != v[i].first)
             cout << v[i].first << " to " << v[i].second << endl << endl;
           else
             cout << v[i].first << endl << endl;

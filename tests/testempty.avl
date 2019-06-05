@@ -1,0 +1,9 @@
+print left-left
+
+print left-right
+
+print right-left
+
+print right-right
+
+lookup 1 2 3 4 5

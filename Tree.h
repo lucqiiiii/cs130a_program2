@@ -209,6 +209,10 @@ private:
     int f2 = 0;
     check(root,min,max,f1,f2);
   }
+
+  void insertHelper(std::vector<std::pair<int,int> >& v, int min, int max) {
+    if(min <= max) v.push_back(std::pair<int,int>(min, max));
+  }
   
   void check(node* root, int min, int max, int f1, int f2){
     if(root == NULL){
@@ -238,33 +242,30 @@ private:
 //      std::cout << "I'm at " << root->value << std::endl;
       if(f1 == -1){//f1 is set to left, the first op is left
         if(f2 == -1){//left with sibling
-	  LL.push_back(pair<int,int>(min,root -> value - 1));
-	  LL.push_back(pair<int,int>(root -> value + 1, max));
+	    insertHelper(LL,min,root -> value - 1);
+	    insertHelper(LL,root -> value + 1, max);
         }
         else if(f2 == 1){//left with sibling
-	  LR.push_back(pair<int,int>(root -> value + 1, max));
-	  LR.push_back(pair<int,int>(min, root -> value - 1));
-
+	    insertHelper(LR,root -> value + 1, max);
+	    insertHelper(LR,min, root -> value - 1);
         }
         else{//no sibling
-          LL.push_back(pair<int,int>(min,root -> value - 1));
-	  LR.push_back(pair<int,int>(root -> value + 1,max));
+            insertHelper(LL,min,root -> value - 1);
+  	    insertHelper(LR,root -> value + 1,max);
         }
       }
       else if(f1 == 1){//f1 set to right, the first op is right
         if(f2 == -1){//left with sibling
-          RL.push_back(pair<int,int>(min,root -> value - 1));
-	  RL.push_back(pair<int,int>(root -> value + 1, max));
-
+            insertHelper(RL,min,root -> value - 1);
+	    insertHelper(RL,root -> value + 1, max);
         }
         else if(f2 == 1){//left with sibling
-	  RR.push_back(pair<int,int>(root -> value + 1,max));
-	  RR.push_back(pair<int,int>(min, root -> value - 1));
-
+	    insertHelper(RR,root -> value + 1,max);
+      	    insertHelper(RR,min, root -> value - 1);
         }
         else{//no sibling
-          RL.push_back(pair<int,int>(min,root -> value - 1));
-	  RR.push_back(pair<int,int>(root -> value + 1,max));
+            insertHelper(RL,min,root -> value - 1);
+	    insertHelper(RR,root -> value + 1,max);
         }
       }
       else{//f1 not set, no rotation

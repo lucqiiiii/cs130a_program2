@@ -1,0 +1,14 @@
+Added 4 of 4 nodes.
+Visited 5 (1.25) nodes and performed 1 (0.25) rotations.
+
+Found 1 of 4 nodes: [4]
+Visited 8 (2) nodes and performed 0 (0) rotations.
+
+No inserts would cause a left-left rotation.
+
+No inserts would cause a left-right rotation.
+
+No inserts would cause a right-left rotation.
+
+No inserts would cause a right-right rotation.
+
