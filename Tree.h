@@ -178,6 +178,9 @@ private:
       } 
       cout << "Node(" << root -> value << ", h=" << (root -> height) - 1          <<"):" << endl;
       depth++;
+      printPre(root -> left,depth);  
+      printPre(root -> right,depth); 
+
     }
     else if(root -> left == NULL && root -> right == NULL){
       for(int i = 0; i < depth; i++){
@@ -189,8 +192,6 @@ private:
     else{
       return;
     }
-    printPre(root -> left,depth);  
-    printPre(root -> right,depth); 
   }  
 
 /*  vector<pair<int,int>> printll(node* root){

@@ -68,13 +68,14 @@ int main(int argc, char* argv[]){
         cout << v[i] << ", ";
       }
       cout << v[i]<< "]" << endl;
-      cout << "Visited " << t.getVisit() << " (" << (t.getVisit()/length) << ") nodes and performed " << t.getRotate() << " (" << (t.getRotate()/length) << ") rotations." << endl;
+      cout << "Visited " << t.getVisit() << " (" << (t.getVisit()/length) << ") nodes and performed " << t.getRotate() << " (" << (t.getRotate()/length) << ") rotations.\n" << endl;
     }
     
     else if(word == "print"){
       iss >> word;
       if(word == "tree"){
         t.printPre();
+        cout << endl;
       }
 /*      else if(word == "left-left"){
         printll();
