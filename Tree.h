@@ -17,7 +17,7 @@ public:
   double getRotate(){return rotate;}
   int getInsert(){return inserted;}
   bool lookup(int value){ return lookup(value,root);}
-  void printPre(){printPre(root);}
+  void printPre(){int depth = 0; printPre(root,depth);}
 /*  vector<pair<int,int>> printll(){printll(root);}
   vector<pair<int,int>> printlr(){printlr(root);}
   vector<pair<int,int>> printrl(){printrl(root);}
@@ -150,32 +150,47 @@ private:
     if(root == NULL){
       return false;
     }
-    if(root -> value == value){
+    else if(root -> value == value){
+      visit++;
       return true;
     }
     else if(root -> value < value){
-      lookup(value, root -> right);
       visit++;
+      return lookup(value, root -> right);
     }
     else if(root -> value > value){
-      lookup(value, root -> left);
       visit++;
+      return lookup(value, root -> left);
     }
     return false;
   }
 
-   void printPre(node* root){ 
+   void printPre(node* root, int depth){ 
     if (root == NULL){ 
+      for(int i = 0; i < depth; i++){
+        cout << "  ";
+      } 
       cout << "Null" << endl; 
     }
-    if(root -> left != NULL || root -> right != NULL){    
-      cout << "Node(" << root -> value << ", h=" << root -> height <<"):"         << endl << "  ";
+    else if(root -> left != NULL || root -> right != NULL){   
+      for(int i = 0; i < depth; i++){
+        cout << "  ";
+      } 
+      cout << "Node(" << root -> value << ", h=" << (root -> height) - 1          <<"):" << endl;
+      depth++;
     }
-    if(root -> left == NULL && root -> right == NULL){
-      cout << "Leaf(" << root -> value << ")" << endl << "  ";
+    else if(root -> left == NULL && root -> right == NULL){
+      for(int i = 0; i < depth; i++){
+        cout << "  ";
+      } 
+      cout << "Leaf(" << root -> value << ")" << endl;
+      return;
     } 
-    printPre(root -> left);  
-    printPre(root -> right); 
+    else{
+      return;
+    }
+    printPre(root -> left,depth);  
+    printPre(root -> right,depth); 
   }  
 
 /*  vector<pair<int,int>> printll(node* root){

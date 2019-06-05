@@ -54,7 +54,7 @@ int main(int argc, char* argv[]){
       int length = 0;
       int count = 0;
       unsigned int i;
-      std::vector<int> v;
+      vector<int> v;
       t.reset();
       while(iss >> value){
         length++;
