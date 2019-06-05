@@ -246,8 +246,8 @@ private:
 	    insertHelper(LL,root -> value + 1, max);
         }
         else if(f2 == 1){//left with sibling
-	    insertHelper(LR,root -> value + 1, max);
-	    insertHelper(LR,min, root -> value - 1);
+           insertHelper(LR,min, root -> value - 1);
+           insertHelper(LR,root -> value + 1, max);
         }
         else{//no sibling
             insertHelper(LL,min,root -> value - 1);
@@ -260,8 +260,8 @@ private:
 	    insertHelper(RL,root -> value + 1, max);
         }
         else if(f2 == 1){//left with sibling
-	    insertHelper(RR,root -> value + 1,max);
       	    insertHelper(RR,min, root -> value - 1);
+	    insertHelper(RR,root -> value + 1,max);
         }
         else{//no sibling
             insertHelper(RL,min,root -> value - 1);
