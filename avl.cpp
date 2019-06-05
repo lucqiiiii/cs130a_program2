@@ -1,6 +1,7 @@
 #include "Tree.h"
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <string>
 #include <unistd.h>
 
@@ -24,7 +25,7 @@ int main(int argc, char* argv[]){
 
   std::ifstream check(argv[1]);
   if(check.fail()) {
-    std::cerr << "Unable to open file: " << testfile << '\n';
+    cerr << "Unable to open file: " << argv[1] << '\n';
     exit(1);
   }
 
@@ -45,14 +46,14 @@ int main(int argc, char* argv[]){
         t.insert(value);       
       }
       count = t.getInsert();
-      cout << "Added " << count << " of " << length << " nodes.\n"
+      cout << "Added " << count << " of " << length << " nodes.\n";
       cout << "Visited " << t.getVisit() << " (" << (t.getVisit()/length) << ") nodes and performed " << t.getRotate() << " (" << (t.getRotate()/length) << ") rotations." << endl;
     }
 
     else if(word == "lookup"){
       int length = 0;
       int count = 0;
-      int i;
+      unsigned int i;
       std::vector<int> v;
       t.reset();
       while(iss >> value){
@@ -73,7 +74,7 @@ int main(int argc, char* argv[]){
     else if(word == "print"){
       word = iss >> word;
       if(word == "tree"){
-        printPre();
+        t.printPre();
       }
 /*      else if(word == "left-left"){
         printll();
