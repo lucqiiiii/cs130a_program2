@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int main(){
+int main(int argc, char* argv[]){
 /*  AVL t;
   t.insert(10);
   t.insert(20);
@@ -18,18 +18,18 @@ int main(){
   cout << "\n";  
 */
   if(argc != 2){
-    std::cerr << "Something is wrong" << endl;
+    cerr << "Something is wrong" << endl;
     exit(1);
   }
 
-  std::ifstream check(testfile);
+  std::ifstream check(argv[1]);
   if(check.fail()) {
     std::cerr << "Unable to open file: " << testfile << '\n';
     exit(1);
   }
 
   AVL t;
-
+  string line;
   while(std::getline(check, line)){
     std::istringstream iss(line);
     string word;
@@ -41,29 +41,33 @@ int main(){
       int length = 0;
       t.reset();
       while(iss >> value){
-        length++；
+        length++;
         t.insert(value);       
       }
       count = t.getInsert();
-      std::cout << "Added " << count << " of " << length << " nodes.\n"
-      std::cout << "Visited " << t.getVisit() << " (" << (t.getVisit()/length) << ") nodes and performed " << t.getRotate() << " (" << (t.getRotate()/length) << ") rotations." << endl;
+      cout << "Added " << count << " of " << length << " nodes.\n"
+      cout << "Visited " << t.getVisit() << " (" << (t.getVisit()/length) << ") nodes and performed " << t.getRotate() << " (" << (t.getRotate()/length) << ") rotations." << endl;
     }
 
     else if(word == "lookup"){
       int length = 0;
       int count = 0;
+      int i;
       std::vector<int> v;
       t.reset();
       while(iss >> value){
         length++;
         if(t.lookup(value) == true){
           count++;
-          v.std::push_back(value);
+          v.push_back(value);
         }
       }
-      std::cout << "Found " << count << " of " << length << " nodes:" << v
-      << endl;
-      std::cout << "Visited " << t.getVisit() << " (" << (t.getVisit()/length) << ") nodes and performed " << t.getRotate() << " (" << (t.getRotate()/length) << ") rotations." << endl;
+      cout << "Found " << count << " of " << length << " nodes: [";
+      for(i = 0; i < v.size()-1; i++){
+        cout << v[i] << ", ";
+      }
+      cout << v[i]<< "]" << endl;
+      cout << "Visited " << t.getVisit() << " (" << (t.getVisit()/length) << ") nodes and performed " << t.getRotate() << " (" << (t.getRotate()/length) << ") rotations." << endl;
     }
     
     else if(word == "print"){

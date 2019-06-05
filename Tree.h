@@ -167,7 +167,7 @@ private:
     if (root == NULL){ 
       cout << "Null" << endl; 
     }
-    if(root -> left != NULL | root -> right != NULL){    
+    if(root -> left != NULL || root -> right != NULL){    
       cout << "Node(" << root -> value << ", h=" << root -> height <<"):"         << endl << "  ";
     }
     if(root -> left == NULL && root -> right == NULL){
