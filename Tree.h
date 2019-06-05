@@ -48,8 +48,11 @@ private:
   void destroy(node* root){
     while(root != NULL){
       destroy(root -> left);
+      cout << "delete left" << endl;
       destroy(root -> right);
+      cout << "delete right" << endl;
       delete root;
+      cout << "delete root" << endl;
     }
   }
   
@@ -63,8 +66,8 @@ private:
 
   node* insert(int value, node* root){
     if(root == NULL){
-      return newnode(value);
       inserted++;
+      return newnode(value);
     }
     else if(value < root -> value){
       root -> left = insert(value,root -> left);
