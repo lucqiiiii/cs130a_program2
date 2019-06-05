@@ -47,7 +47,7 @@ int main(int argc, char* argv[]){
       }
       count = t.getInsert();
       cout << "Added " << count << " of " << length << " nodes.\n";
-      cout << "Visited " << t.getVisit() << " (" << (t.getVisit()/length) << ") nodes and performed " << t.getRotate() << " (" << (t.getRotate()/length) << ") rotations." << endl;
+      cout << "Visited " << t.getVisit() << " (" << (t.getVisit()/length) << ") nodes and performed " << t.getRotate() << " (" << (t.getRotate()/length) << ") rotations.\n" << endl;
     }
 
     else if(word == "lookup"){
