@@ -46,13 +46,10 @@ private:
   int inserted;
   
   void destroy(node* root){
-    while(root != NULL){
+    if(root != NULL){
       destroy(root -> left);
-      cout << "delete left" << endl;
       destroy(root -> right);
-      cout << "delete right" << endl;
       delete root;
-      cout << "delete root" << endl;
     }
   }
   
